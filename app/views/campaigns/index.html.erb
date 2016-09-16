@@ -1,0 +1,61 @@
+<script >
+   $(document).ready(function() {
+     $('.modal-trigger').leanModal();
+   });
+</script>
+
+
+<div class="container">
+<div class="card">
+   <div class="card-content ">
+      <div>
+         <h5 class="center-align">Listado de campañas </h5>
+      </div>
+   </div>
+</div>
+<ul class="collection z-depth-1 ">
+   <% @campaigns.each do |n| %>
+   <a  href="/campaigns/<%= n.id %>">
+      <li class="collection-item avatar" style="padding-left: 20px;">
+         <span class="title" style="font-weight: 500;">Titulo :<%= n.name %></span>
+         <p>Contenido:<%= n.body %> <br>
+            Se enviaron a <%=n.error %> usuarios 
+         </p>
+         <p>
+         <div class = "delete">
+            <%= link_to 'delete', n, method: :delete,:class =>"small material-icons green-text", data: { confirm: 'Are you sure?' }  %>
+         </div>
+   <a class="secondary-content right-align">
+   <i >
+   <%= n.created_at.strftime( "%-d %b. %Y ") %>
+   </i>
+   </a>
+   </li>
+   </a>
+   <% end %>
+</ul>
+<div class="fixed-action-btn" style="
+position: fixed;
+    0: auto
+    right: 10px;
+    right: 24px;
+    bottom: 24px;
+" >
+   <a class="btn-floating btn-large red  modal-trigger" href="#modal1">
+   <i class="large material-icons">add</i>
+   </a>
+</div>
+<div id="modal1" class="modal bottom-sheet">
+   <div class="modal-content">
+      <BR>
+      <%= render :partial => 'modals' %>
+   </div>
+   <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Salir</a>
+   </div>
+</div>
+<br>
+<br>
+   
+
+

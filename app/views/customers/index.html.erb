@@ -1,0 +1,169 @@
+<div  ng-controller="BrandsCtrl" class = "brans">
+   <script >
+   $(document).ready(function() {
+   $('.modal-trigger').leanModal();
+   });
+   </script>
+   
+   <div class="container">
+      <div class="card">
+         <div class="card-content " style="padding: 5px !important;margin-top: 20px;">
+            <div>
+               <div class="row" style="margin-bottom: -5px;">
+                  <div class="col s12 m6 ">
+                     <section class="widget">
+                        <header>
+                           <h5> Usuarios  plataforma </h5>
+                           <div class="widget-controls"><a href="#"><i class="glyphicon glyphicon-cog"></i></a> <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a></div>
+                        </header>
+                        <div class="widget-body">
+                           <div class="stats-row">
+                              <div class="stat-item">
+                                 <h6 class="name">Registrados  </h6>
+                                 <p ng-model="largo"  class="value">{{names.length}}</p>
+                              </div>
+                              <div class="stat-item">
+                                 <h6 class="name" >Activos</h6>
+                                 <p class="value" ng-model="app">{{segurosd}}</p>
+                              </div>
+                              <div class="stat-item">
+                                 <h6 class="name">aceptación</h6>
+                                 <p class="value ">{{((segurosd /names.length  )*100 ) |number:3}}%</p>
+                              </div>
+                           </div>
+                           <div class="progress progress-xs" style="WIDTH: 72%;">
+                              <div class="determinate" style="width: {{((segurosd /names.length  )*100 ) |number:3}}%"></div>
+                           </div>
+                        </section>
+                     </div>
+                     <div class="col s6 m6  hide-on-small-only">
+                        <div id="container">Placeholder for chart</div>
+                        
+                        
+                        
+                        
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         
+         <!-- modal new cliente  -->
+         <div id="modal1" class="modal">
+            <div class="modal-content">
+               <div class="form-group fg-line">
+                  <label for="name">Nombre Completo</label>
+                  <input ng-model="customer.name" type="text" class="form-control input-sm" id="name" placeholder="Nombre">
+               </div>
+               <div class="form-group fg-line">
+                  <label for="key">Fecha de nacimiento</label>
+                  <input ng-model="customer.daten" type="text" class="form-control input-sm" id="key" placeholder="Fecha">
+               </div>
+               <div class="form-group fg-line">
+                  <label for="key">Correo</label>
+                  <input ng-model="customer.email" type="text" class="form-control input-sm" id="key" placeholder="Email">
+               </div>
+               <div class="form-group fg-line">
+                  <label for="key">User Token </label>
+                  <input ng-model="customer.usertoken" type="text" class="form-control input-sm" id="key" placeholder="token">
+               </div>
+               <div class="form-group fg-line">
+                  <label for="key">Telefono </label>
+                  <input ng-model="customer.phone" type="text" class="form-control input-sm" id="key" placeholder="Telefono">
+               </div>
+               
+            </div>
+            <div class="modal-footer">
+               <button ng-click="save(customer)" class = "waves-effect waves-light btn" style="float: left;margin-left: 18px;margin-top: 0px;">guardar</button>
+               <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">cerrar</a>
+            </div>
+         </div>
+         <p id="notice"><%= notice %></p>
+         <div class="row">
+            <div class="col s12 m12">
+               <div class="card ">
+                  <div class="card-content ">
+                     <div class="row">
+                        
+                        <div class="col s6 m9  ">
+                           <div class = "clase uno okgo formato hide-on-small-only">   No activos </div>
+                           <div class = "clase  dos nookgo formato hide-on-small-only" formato>  Activos </div>
+                        </div>
+                        <div class="col s6 offset-s6 m3">
+                           <div class="input-field " >
+                              <input id="last_name" type="text" class="validate"  ng-model="test" >
+                              <label for="last_name">Buscar</label>
+                           </div>
+                        </div>
+                        <div class="col s12">
+                           <table class="striped responsive-table ">
+                              <thead>
+                                 <tr>
+                                    <th data-field="id">Nombre </th>
+                                    <th data-field="email">Correo </th>
+                                    <th data-field="token">token </th>
+                                    <th data-field="telefono">Telefono</th>
+                                    
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr  ng-repeat="x in names | filter:test"  >
+                                    
+                                    <td ng-click="showUser(x.id)" class = " nookgo"  ng-class="{'okgo':  x.devic}" >
+                                       
+                                       
+                                    </div>
+                                 </div>
+                                 <div class = "dimi"> </div>
+                                 <div ng-hide="editorEnabled ==x.id || !x.id">{{x.name}}</div>
+                                 <div ng-show="editorEnabled == x.id || !x.id">
+                                    <input type="text" ng-model="x.name" class="form-control input-sm p-l-5" value="{{x.name}}">
+                                 </div>
+                              </td>
+                              <td ng-click="showUser(x.id)" >
+                                 <div ng-hide="editorEnabled ==x.id || !x.id">{{x.email}}</div>
+                                 <div ng-show="editorEnabled == x.id || !x.id">
+                                    <input type="email" ng-model="x.email" class="form-control input-sm p-l-5" value="{{x.name}}">
+                                 </div>
+                              </td>
+                              <td ng-click="showUser(x.id)">{{ x.usertoken  }}</td>
+                              <td ng-click="showUser(x.id)">{{ x.phone }}</td>
+                              <td>
+                                 <div ng-hide="editorEnabled || !x.id">
+                                    <div ng-click="edit(x)" >
+                                       <i class="material-icons">ic_create</i>
+                                    </div>
+                                 </div>
+                                 <div ng-show="editorEnabled == x.id || !x.id">
+                                    <div ng-click="saveEdit(x)" > <i class="material-icons">ic_done</i> </div>
+                                    <div ng-click="cancelEdit()" > <i class="material-icons">ic_clear</i></div>
+                                 </div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     
+                  </div>
+               </div>
+            </div>
+         </div>
+  <a class="btn-floating btn-large waves-effect waves-light red float: right modal-trigger" href="#modal1" style="
+    position: fixed;
+    0: auto
+    right: 10px;
+    right: 24px;
+    bottom: 24px;">
+      <i class="material-icons">add</i>
+   </a>
+
+      </div>
+
+
+
+   </div>
+   
+   <!-- fin fe cart y  float boton    -->
+
+   
+</div>
+</div>

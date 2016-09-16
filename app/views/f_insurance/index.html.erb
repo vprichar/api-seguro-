@@ -1,0 +1,136 @@
+<script >
+$(document).ready(function() {
+$('.modal-trigger').leanModal();
+});
+</script>
+<div class="container">
+  <Br>
+  <div  ng-controller="insuranceCtrl">
+    <div class="row">
+      <div class="col s12 m12">
+        <div class="card">
+          <div class="card-content">
+            <div class="row">
+              <div class="col s12 offset-s0  m4 offset-m8 " style="margin-top: -20px;">
+                
+                <div class="input-field " >
+                  <input id="last_name" type="text" class="validate"  ng-model="test" >
+                  <label for="last_name">Buscar</label>
+                </div>
+              </div>
+              
+              <div class="col s12">
+                <table class =" responsive-table  striped">
+                  <thead>
+                    <tr>
+                      
+                      <th data-field="id">Nombre</th>
+                      <th data-field="id">Fecha de expiracion</th>
+                      <th data-field="id">Beneficiario</th>
+                      <th data-field="id">Numero de poliza</th>
+                      <th data-field="id">Emergencias</th>
+                      <th data-field="id">Nombre comercial </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                    <tr ng-repeat=" domiseguros in domiseguros " >
+                      <td>{{domiseguros.name}}</td>
+                      <td>{{domiseguros.expiration}}</td>
+                      <td>{{domiseguros.insured_name}}</td>
+                      <td>{{domiseguros.policy}}</td>
+                      <td>{{domiseguros.emergency}}</td>
+                      <td>{{domiseguros.refname}}</td>
+                      <td  style="
+                        
+                        padding-left: 3px;
+                        padding-right: 0px;
+                        margin-top: -15px;
+                        padding-bottom: 0px;
+                        ">
+                        <a class="material-icons hide-on-small-only "  ng-click="modal(domiseguros)">ic_attach_file</a>
+                        
+                        <a class="waves-effect waves-light btn movile fondolog " ng-click="modal(domiseguros)"> Adjunto</a>
+                        
+                      </td>
+                    </tr>
+                    
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        
+        
+        <div text-angular ng-model="finsurancedata.description"></div>
+      </div>
+      <div class="modal-footer">
+        <button ng-click="saveEdit(finsurancedata)" class = "waves-effect waves-light btn">guardar</button>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    <!-- Modal Structure -->
+    <div id="modal12" class="modal">
+      <div class="modal-content">
+        <div class="modal-content">
+          <div class="form-group fg-line">
+            <label for="name">Nombre de seguro</label>
+            <input ng-model="finsurance.name" type="text" class="form-control input-sm" id="name" placeholder="Nombre de seguro">
+          </div>
+          <div class="form-group fg-line">
+            <label for="key">Descripción</label>
+            <input ng-model="finsurance.description" type="text" class="form-control input-sm" id="key" placeholder="Descripción">
+          </div>
+          <div class="form-group fg-line">
+            <label for="key">Expiración</label>
+            <input ng-model="finsurance.expiration" type="text" class="form-control input-sm" id="key" placeholder="Expiración">
+          </div>
+          <div class="form-group fg-line">
+            <label for="key">Nombre comercial del seguro  </label>
+            <input ng-model="finsurance.insured_name" type="text" class="form-control input-sm" id="key" placeholder="Nombre comercial del seguro ">
+          </div>
+          <div class="form-group fg-line">
+            <label for="key">póliza #</label>
+            <input ng-model="finsurance.policy" type="text" class="form-control input-sm" id="key" placeholder="póliza ">
+          </div>
+          <div class="form-group fg-line">
+            <label for="key">Numero de aseguradora </label>
+            <input ng-model="finsurance.emergency" type="text" class="form-control input-sm" id="key" placeholder="Numero de aseguradora">
+          </div>
+          <div class="form-group fg-line">
+            <label for="key"Nombre comercial</label>
+            <input ng-model="finsurance.refname" type="text" class="form-control input-sm" id="key" placeholder="Nombre comercial">
+          </div>
+          
+          
+        </div>
+        <div class="modal-footer">
+          <button ng-click="save(finsurance)" class = "waves-effect waves-light btn" style="float: left;">guardar</button>
+          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" >Cerrar</a>
+        </div>
+      </div>
+    </div>
+
+    <a class="btn-floating btn-large waves-effect waves-light red float: right modal-trigger" href="#modal12" style="
+    position: fixed;
+    0: auto
+    right: 10px;
+    right: 24px;
+    bottom: 24px;" >
+      <i class="material-icons">add</i>
+    </a>
+    
+  </div>   

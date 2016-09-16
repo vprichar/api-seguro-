@@ -1,0 +1,21 @@
+<% if notice %>
+  
+  <%if notice =="Your account has been updated successfully." %>
+   <script >
+       Materialize.toast('Su cuenta se ha actualizado correctamente .', 4000)
+      </script>
+  <%end %>
+
+  
+
+
+<% end %>
+<% if alert %>
+
+  <% if alert =="Invalid Email or password." %>
+   <script >
+       Materialize.toast('Usuario o contraseña incorrectos', 4000)
+      </script>
+      <% end %>
+
+<% end %>

@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @insurance.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @insurance.Description %>
+</p>
+
+<p>
+  <strong>Expiration:</strong>
+  <%= @insurance.expiration %>
+</p>
+
+
+
+ <strong>notas de gestion:</strong>
+  <%= @response.read_body   	 %>
+</p>
+
+<strong>json</strong>
+  <%= @request.body	 %>
+</p>
+
+
+ 
+
+
+
+
+
+<%= link_to 'Edit', edit_insurance_path(@insurance) %> |
+<%= link_to 'Back', insurances_path %>

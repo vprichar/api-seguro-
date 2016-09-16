@@ -1,0 +1,71 @@
+<div class="container">
+<div class="row">
+        <div class="col s12 m12">
+          <div class="card">
+            <div class="card-image">
+            </div>
+            <div class="card-content">
+              <%= form_for(@customer) do |f| %>
+  <% if @customer.errors.any? %>
+      <% @customer.errors.full_messages.each do |message| %>
+         <script >
+           Materialize.toast("<%= message%>", 4000)
+          </script>
+      <% end %>
+  <% end %>
+ <h5> hola mundo </h5>
+
+  <div class="row">
+
+      <div class="col s4">
+     
+          <%= f.label :name %><br>
+          <%= f.text_field :name %>
+   
+          <%= f.label :daten %><br>
+          <%= f.text_field :daten %>
+
+
+      
+      </div>
+      <div class="col s4">
+         <%= f.label :email %><br>
+         <%= f.text_field :email %>
+         <%= f.label :usertoken %><br>
+         <%= f.text_field :usertoken %>
+
+   
+      </div>
+      <div class="col s4">
+         <%= f.label :phone %><br>
+        <%= f.text_field :phone %>
+
+
+      </div>
+
+    </div>
+
+
+  
+
+
+
+
+
+              
+
+
+            <div class="card-action">
+              <div class ="waves-effect waves-light btn">
+              <%= f.submit 'guardar'  %>
+               </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+
+
+

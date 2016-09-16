@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  body: MyText
+  sent: 1
+  successful: 1
+  error: 1
+
+two:
+  name: MyString
+  body: MyText
+  sent: 1
+  successful: 1
+  error: 1

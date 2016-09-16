@@ -1,0 +1,76 @@
+<div class="container">
+   <div class="row">
+      <div class="col s12 m12">
+         <div class="card">
+            <div class="card-image">
+            </div>
+            <div class="card-content">
+             <%= form_for(@campaign) do |f| %>
+              <% if @campaign.errors.any? %>
+               <div id="error_explanation">
+              
+                  <ul>
+                     <% @campaign.errors.full_messages.each do |message| %>
+                    <p> <%= message%></p>
+                     <script >
+                     Materialize.toast("<%= message%>", 4000)
+                     </script>
+
+
+
+
+                     <% end %>
+                  </ul>
+               </div>
+               <% end %>
+
+
+              <div class="row">
+
+      <div class="col s12 m4">
+      <%= f.label :Titulo_de_la_compaña  %><br>
+      <%= f.text_field :name %>
+
+      
+      <%= f.label :Mensaje  ,:for =>"textarea1"%><br>
+      <%= f.text_area :body , :class =>"materialize-textarea", :length =>"120" %>
+       
+      </div>
+      <div class="col s12 m4">
+      <label for="test7">Fecha inicial </label>
+       <input type="date" class="datepicker">
+       <label for="test7">Fecha final </label>
+       <input type="date" class="datepicker">
+       
+
+      </div>
+      <div class="col s12  m4 ">
+        Acciones de la notificación 
+          <%= f.select(:direcion, [ ['Solo notificación', '1'], [' Link web ', '2'], ['Modal web   ', '3'] ], {:selected => 0}, { :class => 'selectpicker' }) %>
+
+      Datos
+      <%= f.text_area :data , :class =>"materialize-textarea", :length =>"120" %>
+
+      </div>
+
+    </div>
+          
+
+
+              
+          </div>
+           <div class="card-action">
+            <div class ="waves-effect waves-light btn">
+                <div class = "demos">
+              <%= f.submit 'Guardaar' %> 
+               </div>
+              </div>
+               <% end %>
+            </div>
+       </div>
+    </div>
+  </div>
+</div>
+
+
+

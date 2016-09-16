@@ -1,0 +1,168 @@
+<p id="notice"><%= notice %></p>
+<script >
+$(document).ready(function() {
+$('.modal-trigger').leanModal();
+});
+</script>
+<div class="container">
+
+<div  ng-controller="ShoCtrl">
+    <div class="row">
+      <div class="col s12 m12">
+        <div class="card colorb">
+          <div class="card-content ">
+            
+            <section class="widget">
+              <header>
+                <h4 class="fw-normal">{{curomer.name}}</h4>
+                <div class="widget-controls"><a href="#"><i class="glyphicon glyphicon-cog"></i></a> <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a></div>
+              </header>
+              <div class="widget-body">
+                <div class="stats-row">
+                  <div class="stat-item">
+                    <h6 class="name">Telefono</h6>
+                    <p ng-model="largo"  class="value">{{curomer.phone}}</p>
+                  </div>
+                  <div class="stat-item">
+                    <h6 class="name" >Email</h6>
+                    <p class="value" ng-model="app">{{curomer.email}}</p>
+                  </div>
+                  <div class="stat-item">
+                    <h6 class="name">Fecha de na</h6>
+                    <p class="value "> {{curomer.daten}}</p>
+                  </div>
+                  <div class="stat-item">
+                    <h6 class="name">Estado de cuenta</h6>
+                    <p class="value "> {{device}}</p>
+                  </div>
+                  <div class="stat-item">
+                    <h6 class="name">#seguros</h6>
+                    <p class="value "> {{seguros.length}}</p>
+                  </div>
+                  <div class="stat-item">
+                    <h6 class="name">Token</h6>
+                    <p class="value ">{{curomer.usertoken}}</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m12 ">
+      <div class="card colorb">
+        <div class="card-content ">
+          <span class="card-title">Seguros</span>
+          
+          
+          
+          <div class="input-field col s4 m3 float: right " style=" margin-top: -5px; ">
+            <input id="last_name" type="text" class="validate"  ng-model="test" >
+            <label for="last_name">Buscar</label>
+          </div>
+          
+          <table class="striped">
+            <thead>
+              <tr>
+                <th data-field="id">Nombre</th>
+                <th data-field="email">Descripcion</th>
+                <th data-field="token">Espiración</th>
+                <th data-field="telefono">Beneficiario</th>
+                <th data-field="telefono">Npóliza</th>
+                <th data-field="telefono">Tel</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr  ng-repeat="seguro in seguros | filter:test"  >
+                <td>
+                  
+                  <div ng-hide="editorEnabled ==seguro.id || !seguro.id">{{seguro.name}}</div>
+                  <div ng-show="editorEnabled == seguro.id || !seguro.id">
+                    <input type="text" ng-model="seguro.name" class="form-control input-sm p-l-5" value="{{x.name}}">
+                  </div>
+                </td>
+                <td>{{ seguro.Description}}</td>
+                <td>
+                  <div ng-hide="editorEnabled ==seguro.id || !seguro.id">{{seguro.expiration}}</div>
+                  <div ng-show="editorEnabled == seguro.id || !seguro.id">
+                    <input type="text" ng-model="seguro.expiration" class="form-control input-sm p-l-5" value="{{x.expiration}}">
+                  </div>
+                </td>
+                <td>{{ seguro.insured_name }}</td>
+                <td>{{ seguro.policy }}</td>
+                <td>{{ seguro.emergency }}</td>
+                <td>
+                  <div ng-hide="editorEnabled || !seguro.id">
+                    <div ng-click="edit(seguro)" >
+                      <i class="material-icons">ic_create</i>
+                    </div>
+                  </div>
+                  <div ng-show="editorEnabled == seguro.id || !seguro.id">
+                    <div ng-click="saveEdit(seguro)" > <i class="material-icons">ic_done</i> </div>
+                    <div ng-click="cancelEdit()" > <i class="material-icons">ic_clear</i></div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+        </div>
+      </div>
+    </div>
+    <a class="btn-floating btn-large waves-effect waves-light red float: right modal-trigger" href="#modal1" >
+    <i class="material-icons">add</i></a>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <div input-field>
+          <select ng-model="seseguro" material-select watch  class="browser-default" ng-change="hasChanged()">
+            <option ng-repeat="value in domiseguros " value="{{value['id']}}" >{{value["name"]}}</option>
+          </select>
+        </div>
+        <div class = "tipo_seguro">
+        </div>
+        <div class="form-group fg-line">
+          <label for="name">nombre comersial  </label>
+          <input ng-model="seguro.name" type="text" class="form-control input-sm" id="name" placeholder="Nombre">
+        </div>
+        <div class="form-group fg-line">
+          <label for="name">Nombre de beneficiarios </label>
+          <input ng-model="seguro.insured_name" type="text" class="form-control input-sm" id="name" placeholder="nombre del seguro">
+        </div>
+        <div class="form-group fg-line">
+          <label for="name"> description </label>
+          <input ng-model="seguro.Description" type="text" class="form-control input-sm" id="name" placeholder="description">
+        </div>
+        <div class="form-group fg-line">
+          <label for="name">Fecha de expirasion</label>
+          <input ng-model="seguro.expiration" type="text" class="form-control input-sm" id="name" placeholder="expirasion">
+        </div>
+        <div class="form-group fg-line">
+          <label for="name">Numero de póliza</label>
+          <input ng-model="seguro.policy" type="text" class="form-control input-sm" id="name" placeholder="politica">
+        </div>
+        <div class="form-group fg-line">
+          <label for="name">numero de aseguradora</label>
+          <input ng-model="seguro.emergency" type="text" class="form-control input-sm" id="name" placeholder="numeor de emerjercia">
+        </div>
+        <div class="form-group fg-line">
+          <label for="name">Nombre comercial</label>
+          <input ng-model="seguro.refname" type="text" class="form-control input-sm" id="name" placeholder="referencia ">
+        </div>
+        <div class="form-group fg-line">
+          <label for="name">features</label>
+          <input ng-model="seguro.features" type="text" class="form-control input-sm" id="name" placeholder="fearures ">
+        </div>
+        <button ng-click="saveseguros(seguro)"  class="waves-effect waves-light btn">guardar</button>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+
+

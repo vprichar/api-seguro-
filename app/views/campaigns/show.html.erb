@@ -1,0 +1,122 @@
+<script >
+Materialize.toast("<%= notice .to_s%>", 4000)$
+
+</script>
+<BR>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m6">
+
+
+
+    <section class="widget z-depth-1" style="background: white;margin-bottom: 20px;">
+
+      
+        <header>
+          <h5>Campaña</h5>
+          <div class="widget-controls"><a href="#"><i class="glyphicon glyphicon-cog"></i></a> <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a></div>
+        </header>
+        <div class="widget-body">
+          <div class="stats-row">
+            <div class="stat-item">
+              <h6 class="name">Push enviadas</h6>
+              <p class="value"><%=  @campaign.sent %>.00</p>
+            </div>
+            <div class="stat-item">
+              <h6 class="name">Abiertas </h6>
+              <p class="value"><%=@campaign.open%></p>
+            </div>
+            <div class="stat-item">
+              <h6 class="name">Conversiones  </h6>
+              <p class="value"><%=  @campaign.error %></p>
+            </div>
+          </div>
+          <div class="progress">
+            <div class="determinate" style="width: 50%"></div>
+          </div>
+          
+          <p><small><span class=""><i class="glyphicon glyphicon-chevron-up"></i></span></small> <span class="fw-semi-bold">50% </span> Éxito de la campaña </p>
+        </div>
+      </section>
+    </div>
+    <div class="col s12 m6 ">
+
+      <section class="widget z-depth-1" style="background: white;">
+        <header>
+          <h5>Tiempo trascurrido </h5>
+          <div class="widget-controls"><a href="#"><i class="glyphicon glyphicon-cog"></i></a> <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a></div>
+        </header>
+        <div class="widget-body">
+          <div class="stats-row">
+            <div class="stat-item">
+              <h6 class="name">Fecha inicial </h6>
+              <p class="value"><%=  @campaign.created_at.strftime( "%-d %b. %Y ") %> </p>
+            </div>
+            <div class="stat-item">
+              <h6 class="name">Fecha final </h6>
+              <p class="value"><%=  @campaign.updated_at.strftime( "%-d %b. %Y ") %> </p>
+            </div>
+            <div class="stat-item">
+              <h6 class="name">Tiempo </h6>
+              <p class="value" style=" margin-top: -5px; margin-bottom: 0px;text-align: center;font-size: 30px;">
+              12h</p>
+            </div>
+          </div>
+          <div class="progress">
+            <div class="determinate" style="width: 99%"></div>
+          </div>
+          
+          <p><small><span class=""><i class="glyphicon glyphicon-chevron-up"></i></span></small> <span class="fw-thin">99% </span> Porcentaje completado </p>
+        </div>
+      </section>
+    </div>
+  </div>
+  Demo notificación
+  <ul class="collection z-depth-1">
+    <li class="collection-item avatar">
+      <img src="/assets/umbrella.png" alt="" class="circle">
+      <span class="title" style="font-weight: 400;"><%= @campaign.name %></span>
+      <p><%= @campaign.body %></p>
+      <a href="#!" class="secondary-content"><i ><%= @campaign.created_at %></i></a>
+    </li>
+  </ul>
+  
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="card">
+        <div class="card-image">
+          
+          
+        </div>
+        <div class="card-content">
+
+         <div  ng-controller="datasd">
+
+         <div class ="grafica2">
+
+          <div id="graficas">Placeholder for chart</div>
+          </div>
+
+         
+         </div>
+
+        </div>
+        <div class="card-action">
+          <div>
+            <%= link_to 'Atras', campaigns_path ,:class => " waves-effect waves-light btn" %>
+            <%= link_to 'Editar', edit_campaign_path(@campaign) ,:class => " waves-effect waves-light btn" %>
+            
+            
+            
+            <div class="waves-effect waves-light btn  punto  action">
+              <i class="material-icons left  " ></i>
+              <div class = "demos">
+                <%= link_to "Enviar", :controller => "campaigns", :action => "getmensa",:id => @campaign.id   %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
